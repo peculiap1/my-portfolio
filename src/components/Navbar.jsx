@@ -1,36 +1,81 @@
-import {
-  Navbar,
-  NavbarBrand,
-  NavbarContent,
-  NavbarItem,
-  Link,
-} from "@nextui-org/react";
+/**
+ *
+ * Node modules
+ */
+import { useRef, useEffect } from "react";
+import PropTypes from "prop-types";
 
-export default function AppNavbar() {
+const Navbar = ({ navOpen }) => {
+  const lastActiveLink = useRef();
+  const activeBox = useRef();
+
+  const initActiveBox = () => {
+    if (activeBox.current && lastActiveLink.current) {
+      activeBox.current.style.top = lastActiveLink.current.offsetTop + "px";
+      activeBox.current.style.left = lastActiveLink.current.offsetLeft + "px";
+      activeBox.current.style.width = lastActiveLink.current.offsetWidth + "px";
+      activeBox.current.style.height =
+        lastActiveLink.current.offsetHeight + "px";
+    }
+  };
+
+  useEffect(initActiveBox, []);
+  window.addEventListener("resize", initActiveBox);
+
+  const activeCurrentLink = (e) => {
+    lastActiveLink.current?.classList.remove("active");
+    e.target.classList.add("active");
+    lastActiveLink.current = e.target;
+
+    activeBox.current.style.top = e.target.offsetTop + "px";
+    activeBox.current.style.left = e.target.offsetLeft + "px";
+    activeBox.current.style.width = e.target.offsetWidth + "px";
+    activeBox.current.style.height = e.target.offsetHeight + "px";
+  };
+
+  const navItems = [
+    {
+      label: "Home",
+      link: "#home",
+      className: "nav-link active",
+      ref: lastActiveLink,
+    },
+    {
+      label: "About",
+      link: "#about",
+      className: "nav-link",
+    },
+    {
+      label: "Projects",
+      link: "#projects",
+      className: "nav-link",
+    },
+    {
+      label: "Contact",
+      link: "#contact",
+      className: "nav-link md:hidden",
+    },
+  ];
+
   return (
-    <Navbar>
-      <NavbarBrand shouldHideOnScroll>
-        <img src="/logo.svg" alt="logo" className="w-10" />
-        <p className="font-bold text-inherit">Peculia Peweel</p>
-      </NavbarBrand>
-
-      <NavbarContent className="hidden sm:flex gap-4" justify="end">
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Features
-          </Link>
-        </NavbarItem>
-        <NavbarItem isActive>
-          <Link href="#" aria-current="page">
-            Customers
-          </Link>
-        </NavbarItem>
-        <NavbarItem>
-          <Link color="foreground" href="#">
-            Integrations
-          </Link>
-        </NavbarItem>
-      </NavbarContent>
-    </Navbar>
+    <nav className={"navbar " + (navOpen ? "active" : "")}>
+      {navItems.map(({ label, link, className, ref }, key) => (
+        <a
+          href={link}
+          key={key}
+          ref={ref}
+          className={className}
+          onClick={activeCurrentLink}
+        >
+          {label}
+        </a>
+      ))}
+      <div className="active-box" ref={activeBox}></div>
+    </nav>
   );
-}
+};
+
+Navbar.propTypes = {
+  navOpen: PropTypes.bool.isRequired,
+};
+export default Navbar;

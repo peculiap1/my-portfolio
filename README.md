@@ -1,3 +1,2 @@
 bash
-`npm install -g nextui-cli
- npm install -D tailwindcss`
+`npm i -D daisyui@latest`

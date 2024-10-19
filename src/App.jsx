@@ -1,14 +1,22 @@
-import Projects from "./pages/Projects";
-import "./App.css";
-import AppNavbar from "./components/Navbar";
-import { NextUIProvider } from "@nextui-org/react";
+/**
+ *
+ * Components
+ */
 
-function App() {
+import Header from "./components/Header";
+import Hero from "./components/Hero";
+import About from "./components/About";
+
+const App = () => {
   return (
-    <NextUIProvider>
-      <AppNavbar></AppNavbar>
-    </NextUIProvider>
+    <>
+      <Header />
+      <main>
+        <Hero />
+        <About />
+      </main>
+    </>
   );
-}
+};
 
 export default App;
