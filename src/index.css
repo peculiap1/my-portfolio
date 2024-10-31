@@ -5,11 +5,35 @@
 /* BASE */
 
 html {
-  scroll-behaviour: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
   @apply bg-zinc-900 text-zinc-50 min-h-[100vh];
+}
+
+.container {
+  @apply px-4 mx-auto lg:px-8 xl:max-w-6xl;
+}
+
+.img-box {
+  @apply overflow-hidden grid place-items-center;
+}
+
+.section {
+  @apply pt-20 lg:pt-32;
+}
+
+.headline-2 {
+  @apply text-3xl lg:text-4xl lg:leading-tight font-semibold;
+  @apply max-w-max;
+  background: -webkit-linear-gradient(0deg, #fafafa, #a1a1aa);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title-1 {
+  @apply text-[22px] font-normal;
 }
 
 /* util */
@@ -57,10 +81,16 @@ body {
   @apply bg-zinc-50 text-zinc-900 active:bg-zinc-50/80;
 }
 
-.container {
-  @apply px-4 mx-auto lg:px-8 xl:max-w-6xl;
+/* Label */
+
+.label {
+  @apply block text-zinc-200 text-sm font-normal mb-2;
 }
 
-.section {
-  @apply pt-20 lg:pt-32;
+.text-field {
+  @apply block outline-none w-full px-3 py-3 text-sm bg-zinc-800 rounded-xl ring-1 ring-inset ring-transparent transition-shadow hover:ring-zinc-50/5 focus:ring-primary focus:ring-2;
+}
+
+.text-field::placeholder {
+  @apply text-zinc-400;
 }

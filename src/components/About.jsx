@@ -4,10 +4,10 @@ const About = () => {
       <div className="container">
         <div className="hero bg-zinc-800/50 p-7 rounded-2xl md:p-12">
           <div className="hero-content flex flex-col">
-            <h1 className="text-5xl font-bold self-center lg:self-start">
+            <h1 className="headline-2 text-5xl font-bold self-start md:self-center lg:self-start">
               About Me
             </h1>
-            <p className="text-zinc-300 mb-4 md:mb-6 md:text-lg md:max-w-[60ch]">
+            <p className="text-zinc-300 md:text-center mb-4 md:mb-6 md:text-lg md:max-w-[60ch] lg:text-start">
               Hi, I’m Peculia Peweel, a passionate software development student
               currently specializing in web development. I have a strong
               interest in creating efficient and user-centered solutions,
@@ -17,14 +17,14 @@ const About = () => {
               currently expanding my knowledge in MongoDB and other back-end
               technologies like GraphQL and Next.js.
             </p>
-            <p className="text-zinc-300 mb-4 md:mb-6 md:text-lg md:max-w-[60ch]">
+            <p className="text-zinc-300 md:text-center mb-4 md:mb-6 md:text-lg md:max-w-[60ch] lg:text-start">
               While I’m still growing in my coding journey, I’m highly motivated
               to learn and improve. I approach challenges with a problem-solving
               mindset and perseverance, always eager to develop my skills
               further. I believe that with each project, I become more confident
               in my ability to deliver clean, functional, and scalable code.
             </p>
-            <p className="text-zinc-300 mb-4 md:mb-6 md:text-lg md:max-w-[60ch]">
+            <p className="text-zinc-300 md:text-center mb-1 md:mb-1 md:text-lg md:max-w-[60ch] lg:text-start">
               I’m excited to explore opportunities that allow me to apply and
               deepen my expertise in both front-end and back-end development. I
               aim to bring creativity and technical knowledge to every project I

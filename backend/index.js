@@ -4,6 +4,8 @@ import { buildSchema } from "graphql";
 import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
+
+//Models
 import Project from "./models/Project.js";
 
 dotenv.config();
@@ -22,6 +24,7 @@ const schema = buildSchema(`
     id: ID!
     name: String!
     description: String!
+    imageUrl: String
     }
     type Query {
     projects: [Project]
@@ -36,6 +39,7 @@ const root = {
         id: project._id.toString(),
         name: project.name,
         description: project.description,
+        imageUrl: project.imageUrl,
       }));
     } catch (error) {
       console.error("Error fetching projects:", error);
@@ -43,6 +47,16 @@ const root = {
     }
   },
 };
+
+app.get("/projects", async (req, res) => {
+  try {
+    const projects = await Project.find();
+    res.status(200).json(projects);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: "Error retrieving projects" });
+  }
+});
 
 app.use(
   "/graphql",
