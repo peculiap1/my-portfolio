@@ -15,16 +15,15 @@ const Header = () => {
 
     const handleScroll = () => {
       if (window.scrollY > lastScrollY) {
-        setHeaderVisible(false); // Hide header when scrolling down
+        setHeaderVisible(false);
       } else {
-        setHeaderVisible(true); // Show header when scrolling up
+        setHeaderVisible(true);
       }
       lastScrollY = window.scrollY;
     };
 
     window.addEventListener("scroll", handleScroll);
 
-    // Clean up event listener on component unmount
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -41,11 +40,9 @@ const Header = () => {
           </Link>
         </h1>
 
-        {/* Conditionally render Navbar and "My Projects" button on the homepage */}
         {isHomePage && (
           <>
             <div className="relative md:justify-self-center">
-              {/* Toggle menu button for smaller screens */}
               <button
                 className="menu-btn md:hidden"
                 onClick={() => setNavOpen((prev) => !prev)}
@@ -56,7 +53,7 @@ const Header = () => {
               </button>
               <Navbar navOpen={navOpen} />
             </div>
-            {/* "My Projects" button on the right for larger screens */}
+
             <Link
               to="/projects"
               className="btn btn-secondary max-md:hidden md:justify-self-end"

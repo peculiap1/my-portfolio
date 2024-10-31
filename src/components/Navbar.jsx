@@ -1,6 +1,6 @@
 import { useRef, useEffect } from "react";
 import PropTypes from "prop-types";
-import { Link, useLocation } from "react-router-dom"; // Import useLocation
+import { Link, useLocation } from "react-router-dom";
 
 const Navbar = ({ navOpen }) => {
   const lastActiveLink = useRef();
@@ -31,13 +31,12 @@ const Navbar = ({ navOpen }) => {
     activeBox.current.style.height = e.target.offsetHeight + "px";
   };
 
-  // Define navigation items conditionally based on route
   const navItems =
     location.pathname === "/projects"
       ? [
           {
             label: "Contact Me",
-            link: "/#contact", // Updated to go back to homepage contact section
+            link: "/#contact",
             className: "nav-link",
           },
         ]
